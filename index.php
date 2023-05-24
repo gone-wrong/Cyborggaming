@@ -78,6 +78,45 @@ https://templatemo.com/tm-579-cyborg-gaming
                 <div class="heading-section">
                   <h4><em>Most Popular</em> Right Now</h4>
                 </div>
+                
+                <div class="row">
+                <?php
+                    $servername = "localhost";
+                    $username = "root";
+                    $password = "";
+                    $database = "web";
+                    
+                    require 'crud/Database.php';
+                    
+                    $db = new Database($servername, $username, $password, $database);
+                    
+                    //echo "weee databaza";
+                    
+                    $result = $db->get_popular();
+                    
+                    if ($result->num_rows > 0) {
+                        while ($row = $result->fetch_assoc()) {
+                            //echo "ID: " . $row["id"]. " - meno: " . $row["meno"]. " - image: " . $row["image"]. " - rating: " . $row["rating"]. " - downloads: " . $row["downloads"];
+                            echo '<div class="col-lg-3 col-sm-6">';
+                            echo '<div class="item">';
+                            echo '<img src="' .$row["image"]. '" alt="">';
+                            echo '<h4>' .$row["meno"]. '<br><span>' .$row["platform"]. '</span></h4>';
+                            echo '<ul>';
+                            echo '<li><i class="fa fa-star">' .$row["rating"]. '</li>';
+                            echo '<li><i class="fa fa-download"></i>' .$row["downloads"]. '</li>';
+                            echo '</ul>';
+                            echo '</div>';
+                            echo '</div>';
+                        }
+                    } else {
+                        echo "No data found";
+                    }
+                    
+                    $db->closeConn();
+                    
+                    
+                ?>  
+                <!--    
                 <div class="row">
                   <div class="col-lg-3 col-sm-6">
                     <div class="item">
@@ -165,6 +204,7 @@ https://templatemo.com/tm-579-cyborg-gaming
                       </ul>
                     </div>
                   </div>
+                  -->
                   <div class="col-lg-12">
                     <div class="main-button">
                       <a href="browse.php">Discover Popular</a>
