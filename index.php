@@ -78,7 +78,6 @@ https://templatemo.com/tm-579-cyborg-gaming
                 <div class="heading-section">
                   <h4><em>Most Popular</em> Right Now</h4>
                 </div>
-                
                 <div class="row">
                 <?php
                     $servername = "localhost";
@@ -95,21 +94,30 @@ https://templatemo.com/tm-579-cyborg-gaming
                     $result = $db->get_popular();
                     
                     if ($result->num_rows > 0) {
+                      $temp = 4;
                         while ($row = $result->fetch_assoc()) {
-                            //echo "ID: " . $row["id"]. " - meno: " . $row["meno"]. " - image: " . $row["image"]. " - rating: " . $row["rating"]. " - downloads: " . $row["downloads"];
-                            echo '<div class="col-lg-3 col-sm-6">';
-                            echo '<div class="item">';
-                            echo '<img src="' .$row["image"]. '" alt="">';
-                            echo '<h4>' .$row["meno"]. '<br><span>' .$row["platform"]. '</span></h4>';
-                            echo '<ul>';
-                            echo '<li><i class="fa fa-star">' .$row["rating"]. '</li>';
-                            echo '<li><i class="fa fa-download"></i>' .$row["downloads"]. '</li>';
-                            echo '</ul>';
+
+                          if($temp == 0) {
                             echo '</div>';
-                            echo '</div>';
+                            echo '<div class="row">';
+                            $temp = 4;
+                          }
+
+                          //echo "ID: " . $row["id"]. " - meno: " . $row["meno"]. " - image: " . $row["image"]. " - rating: " . $row["rating"]. " - downloads: " . $row["downloads"];
+                          echo '<div class="col-lg-3 col-sm-6">';
+                          echo '<div class="item">';
+                          echo '<img src="'.$row["image"].'" alt="">';
+                          echo '<h4>'.$row["meno"].'<br><span>'.$row["platform"].'</span></h4>';
+                          echo '<ul>';
+                          echo '<li><i class="fa fa-star"></i> '.$row["rating"].'</li>';
+                          echo '<li><i class="fa fa-download"></i> '.$row["downloads"].'</li>';
+                          echo '</ul>';
+                          echo '</div>';
+                          echo '</div>';
+                          $temp--;
                         }
                     } else {
-                        echo "No data found";
+                      echo "prazdna db";
                     }
                     
                     $db->closeConn();
@@ -118,6 +126,7 @@ https://templatemo.com/tm-579-cyborg-gaming
                 ?>  
                 <!--    
                 <div class="row">
+
                   <div class="col-lg-3 col-sm-6">
                     <div class="item">
                       <img src="assets/images/popular-01.jpg" alt="">
@@ -128,6 +137,7 @@ https://templatemo.com/tm-579-cyborg-gaming
                       </ul>
                     </div>
                   </div>
+
                   <div class="col-lg-3 col-sm-6">
                     <div class="item">
                       <img src="assets/images/popular-02.jpg" alt="">
@@ -138,6 +148,7 @@ https://templatemo.com/tm-579-cyborg-gaming
                       </ul>
                     </div>
                   </div>
+
                   <div class="col-lg-3 col-sm-6">
                     <div class="item">
                       <img src="assets/images/popular-03.jpg" alt="">
@@ -148,6 +159,7 @@ https://templatemo.com/tm-579-cyborg-gaming
                       </ul>
                     </div>
                   </div>
+
                   <div class="col-lg-3 col-sm-6">
                     <div class="item">
                       <img src="assets/images/popular-04.jpg" alt="">
@@ -158,7 +170,6 @@ https://templatemo.com/tm-579-cyborg-gaming
                       </ul>
                     </div>
                   </div>
-                  <div class="col-lg-6">
                     <div class="item">
                       <div class="row">
                         <div class="col-lg-6 col-sm-6">
@@ -211,7 +222,7 @@ https://templatemo.com/tm-579-cyborg-gaming
                     </div>
                   </div>
                 </div>
-              </div>
+              </div>  
             </div>
           </div>
           <!-- ***** Most Popular End ***** -->
