@@ -76,7 +76,7 @@ https://templatemo.com/tm-579-cyborg-gaming
             <div class="row">
               <div class="col-lg-12">
                 <div class="heading-section">
-                  <h4><em>Most Popular</em> Right Now</h4>
+                  <h4><em>Most Popular</em> Right Now</h4> <p><a href="insert.php">add</a>      <a href="delete.php">delete</a></p>
                 </div>
                 <div class="row">
                 <?php

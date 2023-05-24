@@ -1,6 +1,6 @@
 <?php
     class Database {
-        private $conn;
+        public $conn;
 
         public function __construct($servername, $username, $password, $database) {
             $this->conn = new mysqli($servername, $username, $password, $database);
